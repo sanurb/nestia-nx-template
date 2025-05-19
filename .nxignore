@@ -1,0 +1,5 @@
+# Readmes in parent folders
+**/README.md
+
+# Ignoring tsconfig.base.json so changes to `paths` don't affect all projects
+tsconfig.base.json

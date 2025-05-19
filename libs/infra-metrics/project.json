@@ -1,0 +1,20 @@
+{
+  "name": "infra-metrics",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/infra-metrics/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/infra-metrics",
+        "tsConfig": "libs/infra-metrics/tsconfig.lib.json",
+        "packageJson": "libs/infra-metrics/package.json",
+        "main": "libs/infra-metrics/src/index.ts",
+        "assets": ["libs/infra-metrics/*.md"]
+      }
+    }
+  }
+}

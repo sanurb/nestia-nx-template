@@ -1,4 +1,8 @@
 # Add files here to ignore them from prettier formatting
 /dist
 /coverage
+/tmp
+/cache
+/.cache
 /.nx/cache
+/.nx/workspace-data

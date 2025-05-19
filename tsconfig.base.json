@@ -15,7 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "loggin": ["libs/logging/src/index.ts"]
+      "@sanurb/nestia-nx-template/infra-metrics": [
+        "libs/infra-metrics/src/index.ts"
+      ],
+      "@sanurb/nestia-nx-template/infra-nest-server": [
+        "libs/infra-nest-server/src/index.ts"
+      ],
+      "@sanurb/nestia-nx-template/logging": ["libs/logging/src/index.ts"]
     },
     "plugins": [
       {
@@ -25,6 +31,9 @@
       },
       {
         "transform": "typia/lib/transform"
+      },
+      {
+        "transform": "@nestia/sdk/lib/transform"
       }
     ],
     "strictNullChecks": true,
