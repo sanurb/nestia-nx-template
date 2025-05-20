@@ -6,7 +6,7 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/apps/.*/e2e'],
   testTimeout: 20000,
   detectOpenHandles: true,
-  detectLeaks: false,
+  detectLeaks: true,
   passWithNoTests: true,
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageReporters: ['json'],

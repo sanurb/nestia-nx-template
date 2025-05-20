@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from '@nestjs/common'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { ProblemModule } from '@sanurb/nestia-nx-template/nest/problem'
 
 @Module({
-  imports: [],
+  imports: [ProblemModule],
   controllers: [AppController],
   providers: [AppService],
 })
