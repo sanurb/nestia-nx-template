@@ -48,6 +48,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "std-env": "^3.9.0",
+    "supertest": "^7.1.1",
     "tslib": "^2.3.0",
     "typia": "9.3.0",
     "winston": "^3.17.0"
@@ -71,6 +72,7 @@
     "@types/cookie-parser": "^1.4.8",
     "@types/jest": "29.5.14",
     "@types/node": "~22.15.18",
+    "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
     "eslint": "~8.57.0",

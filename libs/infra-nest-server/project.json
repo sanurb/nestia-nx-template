@@ -3,18 +3,17 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/infra-nest-server/src",
   "projectType": "library",
-  "tags": [],
+  "tags": ["lib:nest", "scope:nest"],
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
       "options": {
-        "outputPath": "dist/libs/infra-nest-server",
-        "tsConfig": "libs/infra-nest-server/tsconfig.lib.json",
-        "packageJson": "libs/infra-nest-server/package.json",
-        "main": "libs/infra-nest-server/src/index.ts",
-        "assets": ["libs/infra-nest-server/*.md"]
-      }
+        "jestConfig": "libs/infra-nest-server/jest.config.ts"
+      },
+      "outputs": ["{workspaceRoot}/coverage/libs/infra-nest-server"]
     }
   }
 }

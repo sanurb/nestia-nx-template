@@ -3,11 +3,8 @@ import { Server } from 'http'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import { NestFactory } from '@nestjs/core'
-import { INestApplication, ValidationPipe, VersioningType } from '@nestjs/common'
+import { INestApplication, VersioningType } from '@nestjs/common'
 import { NestExpressApplication } from '@nestjs/platform-express'
-
-import { NestiaSwaggerComposer } from '@nestia/sdk'
-import { NestiaEditorModule } from '@nestia/editor/lib/NestiaEditorModule'
 
 import {
   getServerPort,
@@ -55,9 +52,9 @@ export async function createApp({
     app.enableVersioning({
       defaultVersion: '1',
       type: VersioningType.URI,
-    });
+    })
   }
-  
+
   if (enableCors) app.enableCors(enableCors)
 
   app.set('trust proxy', JSON.parse(process.env.EXPRESS_TRUST_PROXY ?? 'false'))
@@ -90,28 +87,6 @@ export async function startServer(
 }
 
 /**
- * Sets up Swagger UI and Editor via Nestia.
- */
-export async function setupOpenApi(
-  app: INestApplication,
-  swaggerConfig: Omit<any, 'paths'>,
-  swaggerPath = '/swagger',
-): Promise<void> {
-  // Generate OpenAPI document at compile-time
-  const document = await NestiaSwaggerComposer.document(app, swaggerConfig)
-
-  // Mount Swagger Editor (and UI) at specified path
-  await NestiaEditorModule.setup({
-    path: swaggerPath,
-    application: app,
-    swagger: document as any,
-    package: 'Infra Backend',
-    simulate: true,
-    e2e: true,
-  })
-}
-
-/**
  * Bootstraps the Nest server with given options.
  */
 export async function bootstrap(
@@ -120,6 +95,7 @@ export async function bootstrap(
   const app = await createApp(options)
 
   if (options.openApi) {
+    const { setupOpenApi } = await import('./swagger-setup')
     await setupOpenApi(app, options.openApi, options.swaggerPath)
   }
 
