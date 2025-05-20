@@ -25,6 +25,6 @@ export class InfraController {
    */
   @TypedRoute.Get('version')
   public version(): Version {
-    return { version: process.env.REVISION ?? 'N/A' }
+    return { version: process.env['REVISION'] ?? 'N/A' }
   }
 }

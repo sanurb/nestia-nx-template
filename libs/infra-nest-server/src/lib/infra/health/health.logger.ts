@@ -19,9 +19,9 @@ export class HealthLogger extends ConsoleLogger {
     super()
   }
 
-  error(message: unknown, stack?: string, context?: string): void
-  error(message: unknown, ...optionalParams: unknown[]): void
-  error(
+  override error(message: unknown, stack?: string, context?: string): void
+  override error(message: unknown, ...optionalParams: unknown[]): void
+  override error(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     message: any,
     stack?: unknown,

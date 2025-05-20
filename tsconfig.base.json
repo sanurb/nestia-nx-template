@@ -21,7 +21,10 @@
       "@sanurb/nestia-nx-template/infra-nest-server": [
         "libs/infra-nest-server/src/index.ts"
       ],
-      "@sanurb/nestia-nx-template/logging": ["libs/logging/src/index.ts"]
+      "@sanurb/nestia-nx-template/logging": ["libs/logging/src/index.ts"],
+      "@sanurb/nestia-nx-template/shared": ["libs/shared/problem/src/index.ts"],
+      "@sanurb/nestia-nx-template/nest/problem": ["libs/nest/problem/src/index.ts"],
+      "@sanurb/nestia-nx-template/testing": ["libs/testing/nest/src/index.ts"]
     },
     "plugins": [
       {

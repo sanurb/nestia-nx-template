@@ -57,7 +57,7 @@ export async function createApp({
 
   if (enableCors) app.enableCors(enableCors)
 
-  app.set('trust proxy', JSON.parse(process.env.EXPRESS_TRUST_PROXY ?? 'false'))
+  app.set('trust proxy', JSON.parse(process.env['EXPRESS_TRUST_PROXY'] ?? 'false'))
 
   if (globalPrefix) app.setGlobalPrefix(globalPrefix)
   if (collectMetrics) app.use(httpRequestDurationMiddleware())
@@ -108,8 +108,8 @@ export async function bootstrap(
   if (options.beforeServerStart) options.beforeServerStart(app)
 
   const port =
-    process.env.PORT !== undefined
-      ? Number(process.env.PORT)
+    process.env['PORT'] !== undefined
+      ? Number(process.env['PORT'])
       : options.port ?? 3333
   const metricPort = port === 0 ? 0 : port + 1
 

@@ -10,9 +10,9 @@ export const httpRequestDurationMiddleware = () => {
   })
 
   return (req: Request, res: Response, next: (error?: any) => void) => {
-    res.locals.startEpoch = Date.now()
+    res.locals['startEpoch'] = Date.now()
     res.on('finish', function () {
-      const responseTimeInMs = Date.now() - res.locals.startEpoch
+      const responseTimeInMs = Date.now() - res.locals['startEpoch']
       httpRequestDurationMicroseconds
         .labels(req.method, req.path, `${res.statusCode}`)
         .observe(responseTimeInMs)

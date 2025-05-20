@@ -1,0 +1,19 @@
+{
+  "name": "shared-problem",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/problem/src",
+  "projectType": "library",
+  "tags": ["lib:js", "scope:js"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/shared/problem"],
+      "options": {
+        "jestConfig": "libs/shared/problem/jest.config.ts"
+      }
+    }
+  }
+}
