@@ -1,3 +1,4 @@
+- Always look around the codebase for naming conventions, and follow the best practices of the environment
 - Use kebab-case for file names (e.g., `my-component.ts`)
 - Use camelCase for variables and function names (e.g., `myVariable`, `myFunction()`)
 - Use UpperCamelCase (PascalCase) for classes, types, and interfaces (e.g., `MyClass`, `MyInterface`)
@@ -5,5 +6,5 @@
 - Inside generic types, functions or classes, prefix type parameters with `T` (e.g., `TKey`, `TValue`)
 
 ```ts
-type RecordOfArrays<TItem> = Record<string, TItem[]>;
+type RecordOfArrays<TItem> = Record<string, TItem[]>
 ```
