@@ -10,7 +10,10 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
@@ -21,12 +24,18 @@
       "@sanurb/nestia-nx-template/infra-nest-server": [
         "libs/infra-nest-server/src/index.ts"
       ],
-      "@sanurb/nestia-nx-template/logging": ["libs/logging/src/index.ts"],
+      "@sanurb/nestia-nx-template/logging": [
+        "libs/logging/src/index.ts"
+      ],
       "@sanurb/nestia-nx-template/nest/problem": [
         "libs/nest/problem/src/index.ts"
       ],
-      "@sanurb/nestia-nx-template/shared": ["libs/shared/problem/src/index.ts"],
-      "@sanurb/nestia-nx-template/testing": ["libs/testing/nest/src/index.ts"]
+      "@sanurb/nestia-nx-template/shared": [
+        "libs/shared/problem/src/index.ts"
+      ],
+      "@sanurb/nestia-nx-template/testing": [
+        "libs/testing/nest/src/index.ts"
+      ]
     },
     "plugins": [
       {
@@ -44,5 +53,8 @@
     "strictNullChecks": true,
     "strict": true
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

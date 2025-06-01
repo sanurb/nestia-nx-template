@@ -1,40 +1,47 @@
-import { DynamicModule, Module, Type } from '@nestjs/common'
-import { APP_INTERCEPTOR } from '@nestjs/core'
+import { DynamicModule, Module, Type } from '@nestjs/common';
+import { LoggingModule } from '@sanurb/nestia-nx-template/logging';
+import { HealthModule } from './health/health.module';
+import { HealthCheckOptions } from './health/types';
+import { InfraController } from './infra.controller';
 
-import { LoggingModule } from '@sanurb/nestia-nx-template/logging'
-
-import { InfraController } from './infra.controller'
-import { HealthModule } from './health/health.module'
-import { HealthCheckOptions } from './health/types'
+import { CorrelationIdModule } from '../correlation-id/correlation-id.module';
 
 interface InfraModuleOptions {
-  appModule: Type<unknown>
-  healthCheck?: boolean | HealthCheckOptions
+    appModule: Type<unknown>;
+    healthCheck?: boolean | HealthCheckOptions;
 }
 
 @Module({
-  controllers: [InfraController],
-  providers: [],
-  imports: [LoggingModule],
+    controllers: [InfraController],
+    providers: [],
+    imports: [LoggingModule],
 })
 export class InfraModule {
-  static forRoot({
-    appModule,
-    healthCheck,
-  }: InfraModuleOptions): DynamicModule {
-    const defaultImports = [appModule]
-    return {
-      module: InfraModule,
-      imports: [
-        ...defaultImports,
-        ...(healthCheck === false
-          ? []
-          : [
-              HealthModule.register(
-                healthCheck === true ? undefined : healthCheck,
-              ),
-            ]),
-      ],
+    public static forRoot({
+        appModule,
+        healthCheck,
+    }: InfraModuleOptions): DynamicModule {
+        const defaultImports: Array<Type<unknown> | DynamicModule> = [
+            CorrelationIdModule.forRoot(),
+            appModule,
+        ];
+
+        const healthImports =
+            healthCheck === false
+                ? []
+                : [
+                    HealthModule.register(
+                        healthCheck === true ? undefined : healthCheck,
+                    ),
+                ];
+
+        return {
+            module: InfraModule,
+            imports: [
+                LoggingModule,
+                ...defaultImports,
+                ...healthImports,
+            ],
+        };
     }
-  }
 }
